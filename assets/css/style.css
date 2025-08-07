@@ -1,0 +1,261 @@
+/* Custom styles for Student Course Hub */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --focus-color: #0066cc;
+    --focus-outline-width: 3px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    font-size: 16px; /* Minimum 16px for accessibility */
+}
+
+/* WCAG 2.1 Accessibility Improvements */
+
+/* Skip links for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--focus-color);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 9999;
+    font-weight: 600;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: none;
+}
+
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Enhanced focus styles for keyboard navigation */
+a:focus, 
+button:focus, 
+input:focus, 
+select:focus, 
+textarea:focus,
+.btn:focus,
+.form-control:focus,
+.form-select:focus,
+.nav-link:focus,
+.card:focus,
+.programme-card:focus {
+    outline: var(--focus-outline-width) solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2) !important;
+}
+
+/* Focus visible for modern browsers */
+a:focus-visible, 
+button:focus-visible, 
+input:focus-visible, 
+select:focus-visible, 
+textarea:focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+a:focus:not(:focus-visible), 
+button:focus:not(:focus-visible), 
+input:focus:not(:focus-visible), 
+select:focus:not(:focus-visible), 
+textarea:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000080;
+        --focus-color: #000080;
+    }
+    
+    .card, .programme-card, .module-card {
+        border: 2px solid #000;
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .programme-card {
+        transition: none;
+    }
+    
+    .programme-card:hover {
+        transform: none;
+    }
+}
+
+/* Color contrast improvements */
+.text-muted {
+    color: #495057 !important; /* Better contrast than Bootstrap default */
+}
+
+.small, small {
+    font-size: 0.9rem; /* Larger than Bootstrap default for readability */
+}
+
+/* Keyboard navigation indicators */
+.keyboard-user *:focus {
+    outline: var(--focus-outline-width) solid var(--focus-color) !important;
+    outline-offset: 2px !important;
+}
+
+/* Interactive element sizing (minimum 44px touch target) */
+.btn, .nav-link, .form-control, .form-select {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-sm {
+    min-height: 38px; /* Slightly smaller but still accessible */
+}
+
+/* Card focus states */
+.programme-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.programme-card:focus-within {
+    outline: var(--focus-outline-width) solid var(--focus-color);
+    outline-offset: 2px;
+}
+
+/* Form accessibility */
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-text {
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+/* Error states */
+.is-invalid {
+    border-color: var(--danger-color) !important;
+}
+
+.invalid-feedback {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+/* Live region for screen readers */
+#live-region {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Programme cards */
+.programme-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.programme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.level-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Module cards */
+.module-card {
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Search and filter section */
+.search-filter-section {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+/* Interest form */
+.interest-form {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Admin styles */
+.admin-sidebar {
+    min-height: calc(100vh - 56px);
+    background-color: #343a40;
+}
+
+.admin-sidebar .nav-link {
+    color: #adb5bd;
+    padding: 0.75rem 1rem;
+}
+
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    color: #fff;
+    background-color: #495057;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .programme-card {
+        margin-bottom: 1rem;
+    }
+    
+    .search-filter-section {
+        padding: 1rem 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar, .btn, .interest-form {
+        display: none !important;
+    }
+}
